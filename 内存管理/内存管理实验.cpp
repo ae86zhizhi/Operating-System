@@ -18,7 +18,7 @@ void GetMemSta() {
 		<< "Available Virtual memory " << MemInfo.ullAvailVirtual / 1024 / 1024 << "MB" << endl;
 }
 int main() {
-	GetMemSta();					//输出当前内存情况
+	GetMemSta();
 	printf("================================================.\n");
 	cout << "Allocated 128M Memory Space. " << endl;
 	LPVOID  space128 = malloc(128 * 1024 * 1024);//使用内存分配来获得128MB块
@@ -30,7 +30,7 @@ int main() {
 	GetMemSta();					//输出当前内存情况
 	printf("================================================.\n");
 	cout << "Allocated 128M Memory Space. " << endl;
-	LPVOID pBlock = VirtualAlloc(NULL, 128 << 20, MEM_COMMIT, PAGE_READWRITE);//使用虚拟分配以获得物理128MB块						
+	LPVOID pBlock = VirtualAlloc(NULL, 128 << 20, MEM_COMMIT, PAGE_READWRITE);//使用虚拟分配以获得物理128MB块
 	memset(pBlock, 0, 128 * 1024 * 1024);//尝试向刚申请的内存空间内写入0
 	cout << "Memory zeroed. " << endl;
 	GetMemSta();					//输出当前内存情况
@@ -40,7 +40,7 @@ int main() {
 	printf("================================================.\n");
 	cout << "Allocated 512M Virtual Memory Space." << endl;
 	pBlock = VirtualAlloc(NULL, 512 << 20, MEM_RESERVE, PAGE_READWRITE);//使用虚拟分配以获得虚拟512MB块
-	
+
 	cout << "Could not zero memory " << endl;
 	//memset(pBlock, 0, 512 * 1024 * 1024);//尝试向刚申请的内存空间内写入0
 	GetMemSta();					//输出当前内存情况
